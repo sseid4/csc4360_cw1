@@ -160,7 +160,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
             const SizedBox(height: 40), // Add some spacing
             // Image section
             const Text(
-              'Toggle between Sun and Moon:',
+              'Toggle between images:',
               style: TextStyle(fontSize: 18),
             ),
             const SizedBox(height: 20),
@@ -199,7 +199,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
                 foregroundColor: Colors.white,
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               ),
-              child: Text(_showSun ? 'Switch to Moon' : 'Switch to Sun'),
+              child: Text(_showSun ? 'Switch to image1' : 'Switch to image2'),
             ),
           ],
         ),
