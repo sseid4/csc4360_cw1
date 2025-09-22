@@ -54,14 +54,6 @@ class MyHomePage extends StatefulWidget {
     required this.onThemeToggle,
   });
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
 
   final String title;
   final VoidCallback onThemeToggle;
@@ -72,7 +64,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
   int _counter = 0;
-  bool _showSun = true; // Boolean variable to track image state
+  bool _showSun = true;
 
   // Animation variables
   late AnimationController _animationController;
@@ -84,14 +76,14 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
 
     // Initialize animation controller
     _animationController = AnimationController(
-      duration: const Duration(milliseconds: 500), // Animation duration
-      vsync: this, // Sync with screen refresh rate
+      duration: const Duration(milliseconds: 500),
+      vsync: this,
     );
 
     // Create curved animation for smooth transitions
     _curvedAnimation = CurvedAnimation(
       parent: _animationController,
-      curve: Curves.easeInOut, // Smooth start and end
+      curve: Curves.easeInOut,
     );
   }
 
@@ -103,39 +95,27 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
 
   void _incrementCounter() {
     setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
       _counter++;
     });
   }
 
   void _toggleImage() {
     setState(() {
-      _showSun = !_showSun; // Toggle between true and false
+      _showSun = !_showSun;
     });
 
     // Animation sequence
-    _animationController.reset(); // Start from beginning (0.0)
-    _animationController.forward(); // Animate to end (1.0)
+    _animationController.reset();
+    _animationController.forward();
   }
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: Text(widget.title),
         actions: [
-          // Theme toggle button in the app bar
           IconButton(
             onPressed: widget.onThemeToggle,
             icon: Icon(
@@ -157,7 +137,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
-            const SizedBox(height: 40), // Add some spacing
+            const SizedBox(height: 40),
             // Image section
             const Text(
               'Toggle between images:',
@@ -175,7 +155,7 @@ class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
               ),
               child: FadeTransition(
                 opacity:
-                    _curvedAnimation, // Use curved animation for smooth fade
+                    _curvedAnimation,
                 child: _showSun
                     ? const Icon(
                         Icons.wb_sunny,
